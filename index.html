@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='fr'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='style.css'>
+    <title>Nombre mystère</title>
+</head>
+
+<body>
+
+    <h1>Découvrez le nombre mystère</h1>
+
+    <p>Vous avez <span id="essais">7</span> essais et <span id="tempsMax">30</span> secondes pour trouver le nombre
+        choisi
+        par l'ordinateur, au hasard entre <span id="min">1</span> et <span id="max">100</span></p>
+
+    <form>
+        <div class='commandes'>
+            <input type='button' value='Nouveau jeu' id='nouveau' class='actionPrincipale'>
+            <input type='button' value='Solution' id='solution' disabled>
+            <input type='button' value='Proposer' class='actionPrincipale' id='proposer' disabled>
+        </div>
+        <fieldset>
+            <label for='proposition'>Proposition</label>
+            <input type='number' id='proposition' disabled><br><br>
+
+            <label for='essai'>N° essai</label>
+            <input type='text' id='essai' readonly><br><br>
+
+            <label for='temps'>Temps écoulé</label>
+            <input type='text' id='temps' readonly><br><br>
+
+            <label for='message'>Message</label>
+            <input type='text' id='message' readonly><br><br>
+
+            <label for='reponses'>Réponses</label>
+            <input type='text' id='reponses' readonly>
+        </fieldset>
+    </form>
+
+    <script src='main.js'></script>
+
+</body>
+
+</html>

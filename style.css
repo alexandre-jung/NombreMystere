@@ -1,0 +1,88 @@
+body {
+    width: 600px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    color: cornflowerblue;
+    text-align: center;
+}
+
+p {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+fieldset {
+    border-radius: 3px;
+    margin: 0;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+label {
+    margin-right: 5px;
+}
+
+#reponses, #message {
+    width: 80%;
+}
+
+input {
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 3px 8px;
+    margin-right: 10px;
+    outline: none;
+}
+
+.actionPrincipale:not(:disabled) {
+    background-color: cornflowerblue;
+    border-color: cornflowerblue;
+    color: white;
+}
+
+[type='button'] {
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+[readonly] {
+    user-select: none;
+    cursor: default;
+}
+
+#proposition {
+    border-color: cornflowerblue;
+    background-color: rgba(100, 148, 237, 0.11);
+}
+
+#proposition:disabled {
+    background-color: rgb(223, 223, 223);
+}
+
+#message {
+    font-weight: bold;
+}
+
+label[for='proposition'] {
+    color: cornflowerblue;
+}
+
+label:not([for='proposition']) {
+    color: gray;
+}
+
+[type='button']:disabled {
+    opacity: 0.5;
+}
+
+fieldset input {
+    padding: 5px;
+}
