@@ -7,9 +7,6 @@ const MAX = 100;
 const ESSAIS = 7;
 const tempsMax = 30000;
 
-// Si DEBUG, affiche le nombre dans la console
-const DEBUG = false;
-
 
 // Eléments du DOM
 let elementProposition = document.querySelector('#proposition');
@@ -126,17 +123,12 @@ function commencerPartie() {
     tempsEcoule = 0;
     interval = setInterval(verifierTemps, 1000);
     temps.value = '0';
-
-    if (DEBUG) {
-        console.log(nombreMystere);
-    }
 }
 
 
 // Ajoute une réponse à la liste
 function ajouterReponse(reponse) {
     let tmp = elementReponses.value;
-    console.log(compteurEssais);
     if (compteurEssais != 1)
         tmp = ', ' + tmp;
     elementReponses.value = reponse + tmp;
