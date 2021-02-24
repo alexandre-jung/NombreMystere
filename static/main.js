@@ -53,12 +53,20 @@ function fadeInformations(value) {
 // Termine la partie
 // Désactive les boutons et le timer
 function terminerPartie() {
+    // Réinitialise le timer
+    clearInterval(interval);
+    interval = null;
+
+    // Désactive l'input proposition
     elementProposition.disabled = true;
+    elementProposition.style.borderColor = 'gray';
+
+    // Active seulement le bouton nouvelle partie
     boutonProposer.disabled = true;
     boutonSolution.disabled = true;
     boutonNouvellePartie.disabled = false;
-    clearInterval(interval);
-    interval = null;
+
+    // Grise les autres inputs
     fadeInformations(true);
 }
 
@@ -150,9 +158,16 @@ function proposer() {
     let partieGagnee = false;
 
     // Erreur de saisie
-    if (prop < MIN || prop > MAX || prop == '') {
+    if (prop < MIN || prop > MAX || prop == '' || !Number.isInteger(prop)) {
         afficherMessage(`Vous devez saisir un nombre entre ${MIN} et ${MAX} !`, 'darkorange');
         elementProposition.select();
+
+        // Démarre une animation
+        elementProposition.classList.add('error');
+        setTimeout(() => {
+            elementProposition.classList.remove('error');
+        }, 100);
+        elementProposition.style.borderColor = 'darkorange';
         return;
     }
 
@@ -197,7 +212,25 @@ function proposer() {
 }
 
 
-// Ajoute les écouteurs d'évènements
+// --- Validation dynamique de la proposition ---
+// Quand l'utilisateur entre un caractère, vérifie que c'est un nombre
+// dans l'intervalle, et ajuste la couleur du bord en fonction.
+elementProposition.addEventListener('keyup', function () {
+    let valeur = this.value.trim();
+    let nombre = Number(valeur);
+
+    let estVide = (valeur.length == 0);
+    let estValide = (Number.isInteger(nombre) && nombre >= MIN && nombre <= MAX);
+
+    if (estValide || estVide) {
+        this.style.borderColor = 'cornflowerblue';
+    } else {
+        this.style.borderColor = 'darkorange';
+    }
+});
+
+
+// Ajoute les autres écouteurs d'évènements
 boutonProposer.addEventListener('click', () => proposer());
 boutonNouvellePartie.addEventListener('click', () => commencerPartie());
 boutonSolution.addEventListener('click', () => afficherSolution());

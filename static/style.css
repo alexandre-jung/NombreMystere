@@ -86,3 +86,20 @@ label:not([for='proposition']) {
 fieldset input {
     padding: 5px;
 }
+
+@keyframes error {
+    0% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(5px);
+    }
+}
+
+.error {
+    animation: error 100ms 2 ease-in-out;
+}
+
+#proposition.error {
+    border-color: darkorange;
+}
