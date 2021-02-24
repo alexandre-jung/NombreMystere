@@ -103,3 +103,9 @@ fieldset input {
 #proposition.error {
     border-color: darkorange;
 }
+
+#saisieInvalide {
+    color: darkorange;
+    font-size: 0.75em;
+    display: none;
+}

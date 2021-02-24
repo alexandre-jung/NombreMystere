@@ -17,6 +17,7 @@ let elementTemps = document.querySelector('#temps');
 let boutonProposer = document.querySelector('#proposer');
 let boutonSolution = document.querySelector('#solution');
 let boutonNouvellePartie = document.querySelector('#nouveau');
+let saisieInvalide = document.querySelector('#saisieInvalide');
 
 
 // Variables
@@ -68,6 +69,8 @@ function terminerPartie() {
 
     // Grise les autres inputs
     fadeInformations(true);
+
+    saisieInvalide.style.display = 'none';
 }
 
 
@@ -224,8 +227,10 @@ elementProposition.addEventListener('keyup', function () {
 
     if (estValide || estVide) {
         this.style.borderColor = 'cornflowerblue';
+        saisieInvalide.style.display = 'none';
     } else {
         this.style.borderColor = 'darkorange';
+        saisieInvalide.style.display = 'inline';
     }
 });
 
