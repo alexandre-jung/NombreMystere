@@ -5,7 +5,7 @@
 const MIN = 1;
 const MAX = 100;
 const ESSAIS = 7;
-const tempsMax = 30000;
+const tempsMax = 5000;
 
 
 // Eléments du DOM
@@ -68,9 +68,11 @@ function terminerPartie() {
     boutonNouvellePartie.disabled = false;
 
     // Grise les autres inputs
+    // Masque le message d'erreur
+    // Déselectionne le contenu de l'input proposition
     fadeInformations(true);
-
     saisieInvalide.style.display = 'none';
+    elementProposition.setSelectionRange(0, 0);
 }
 
 
