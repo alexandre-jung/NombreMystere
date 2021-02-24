@@ -5,7 +5,7 @@
 const MIN = 1;
 const MAX = 100;
 const ESSAIS = 7;
-const tempsMax = 5000;
+const tempsMax = 30000;
 
 
 // Eléments du DOM
