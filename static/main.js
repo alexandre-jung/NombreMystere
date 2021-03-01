@@ -5,7 +5,7 @@
 const MIN = 1;
 const MAX = 100;
 const ESSAIS = 7;
-const tempsMax = 30000;
+const tempsMaxMS = 30000;
 
 
 // Eléments du DOM
@@ -23,7 +23,7 @@ let saisieInvalide = document.querySelector('#saisieInvalide');
 // Variables
 let nombreMystere;
 let compteurEssais = 0;
-let tempsEcoule = 0;
+let tempsEcouleMS = 0;
 let interval = null;
 
 
@@ -79,9 +79,10 @@ function terminerPartie() {
 // Vérifie le temps écoulé
 // S'il n'y a plus de temps, termine la partie
 function verifierTemps() {
-    tempsEcoule += 1000;
-    temps.value = tempsEcoule / 1000;
-    if (tempsEcoule >= tempsMax) {
+    tempsEcouleMS += 1000;
+    let tempsRestant = tempsMaxMS - tempsEcouleMS
+    temps.value = tempsRestant / 1000;
+    if (tempsEcouleMS >= tempsMaxMS) {
         terminerPartie();
         afficherMessage('Le temps est écoulé !', 'red');
     }
@@ -92,7 +93,7 @@ function initialiserInterface() {
     document.querySelector('span#essais').textContent = ESSAIS;
     document.querySelector('span#min').textContent = MIN;
     document.querySelector('span#max').textContent = MAX;
-    document.querySelector('span#tempsMax').textContent = tempsMax / 1000;
+    document.querySelector('span#tempsMax').textContent = tempsMaxMS / 1000;
 
     // Désactive tous les boutons sauf nouvelle partie
     elementProposition.disabled = true;
@@ -133,9 +134,9 @@ function commencerPartie() {
     elementProposition.focus();
 
     // Réinitialise / démarre le timer
-    tempsEcoule = 0;
+    tempsEcouleMS = 0;
     interval = setInterval(verifierTemps, 1000);
-    temps.value = '0';
+    temps.value = tempsMaxMS / 1000;
 }
 
 
