@@ -166,6 +166,9 @@ function proposer() {
     // Erreur de saisie
     if (prop < MIN || prop > MAX || prop == '' || !Number.isInteger(prop)) {
         afficherMessage(`Vous devez saisir un nombre entre ${MIN} et ${MAX} !`, 'darkorange');
+
+        // Selectionne tout le contenu de l'input
+        // pour pouvoir faire une nouvelle proposition rapidement
         elementProposition.select();
 
         // Démarre une animation
